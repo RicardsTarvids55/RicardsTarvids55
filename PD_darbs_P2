@@ -1,0 +1,23 @@
+import math
+def delu_pirksana():
+    a = float(input("Kāds ir dēļa platums?"))
+    b = float(input("Kāds ir dēļa biezums?"))
+    c = float(input("Kāds ir dēļa garums?"))
+    n = a*b*c
+    cena_par_kubikmetru_1_skira = 145
+    cena_par_kubikmetru_2_skira = 125
+    print ("Izvēlies dēļu šķiru:")
+    print ("1. ŠĶIRA 1 ")
+    print ("2. ŠĶIRA 2 ")
+    choice = int(input("Ieraksties ciparu, kuru opciju izvēlējāties (1/2):"))
+    if choice == 1:
+        d = 145*n
+        rounded_result_d = round(d, 2)
+        print ("Jūs izvēlējies 1. dēļu šķiru, par pasūtījumu jums jāmaksā", rounded_result_d, "eiro")
+    elif choice == 2:
+        e = 125*n
+        rounded_result_e = round(e, 2)
+        print ("Jūs izvēlējies 2. dēļu šķiru, par pasūtījumu jums jāmaksā", rounded_result_e, "eiro")
+    else: 
+        print ("Tāds apcijas nav, ievadiet skaitli 1 vai 2")
+delu_pirksana()

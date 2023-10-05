@@ -1,0 +1,31 @@
+import math 
+def laukuma_brugesana():
+#parādam, ka meistars dienā nobruģē 8 kvadrātmetru lielu platību
+    m = 8
+#Parādam, ka pirmais maceklis diena nobruģe 1/4 no meistara normas
+    p = m/4
+    p_result = 2
+    for _ in range (10):
+        p_result *= 1.05
+    print ("Pirmais māceklis 10 dienās nobruģēja", p_result, "kvadrātmetrus bruģa")
+#Parādam, ka otrais maceklis diena nobruģe par 2 kvadratmetriem vairak neka pirmais maceklis
+    o = p+2
+    o_result = 4
+    for _ in range (10):
+        o_result *= 1.05
+    print ("Otrais māceklis 10 dienās nobruģēja", o_result, "kvadrātmetrus bruģa")
+#Parādam, ka trešais maceklis diena nobruģe 35% no meistara normas
+    t_procenti = 35
+    t = m-(m*t_procenti/100)
+    t_result = 5.2
+    for _ in range (10):
+        t_result *= 1.05 
+    print ("Trešais māceklis 10 dienās nobruģēja", t_result, "kvadrātmetrus bruģa")
+#Parādam, ka ceturtais maceklis diena nobruģe par 1,5 kvadratmetriem mazāk nekā trešais māceklis
+    c = t - 1.5
+    c_result = 3.7
+    for _ in range (10):
+        c_result *= 1.05
+    print ("Ceturtais māceklis 10 dienās nobruģēja", c_result, "kvadrātmetrus bruģa")
+    print ("Nobruģētā laukuma platība ir", (m*10)+p_result+o_result+t_result+c_result, "kvadrātmetri")
+laukuma_brugesana()
