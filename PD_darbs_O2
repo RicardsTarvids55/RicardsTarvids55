@@ -1,0 +1,15 @@
+def str_to_float(input_time):
+    time_float = float(input_time)
+    if 5.0 <= time_float < 11.0:
+        return "Ir brokastu laiks"
+    elif 11.0<= time_float < 14.0:
+        return "Ir pusdienu laiks"
+    elif 14.0<= time_float < 20.0:
+        return "Ir vakariņu laiks"
+    else: 
+        return "nav ēšanas laiks"
+input_time = input("Ievadiet laiku, kā str")
+result = str_to_float(input_time)
+print(result)
+float_value = float(input_time)
+print (float_value)
