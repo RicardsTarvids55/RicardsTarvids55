@@ -1,0 +1,11 @@
+def darbinieka_alga():
+    name = str(input("Kāds ir darbinieka vārds?"))
+    hours = int(input("Cik stundas nostrādāja darbinieks mēnesī?"))
+    likme = int(input("Kāda ir darbinieka stundas likme?"))
+    salary = hours * likme
+    procenti = 10
+    if hours>40:
+        print("Darbinieks", name, "mēnesī nostrādāja vairāk par 40 stundām, pienākās papildus 10% piemaksa, gala alga darbiniekam ir", salary+(salary * procenti/100))
+    else:
+        print ("Darbinieks", name, "mēnesī nenostrādāja virs 40 stundām, tādēļ papildus piemaksa nepienākas, gala mēnešalga ir", salary)
+darbinieka_alga()
