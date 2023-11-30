@@ -22,7 +22,7 @@ cursor.execute("""
 def intro():
     print("=" * 80)
     print("{:^80s}".format("DARBINIEKU"))
-    print("{:^80s}".format(""))
+    print("{:^80s}".format("INFORMĀCIJA"))
     print("{:^80s}".format("PROJEKTS"))
     print("{:^80s}".format("Autori: Rainers Grigors, Ričards Tarvids, Elīna Kurtiša"))
     print("=" * 80)
@@ -53,9 +53,9 @@ def create_record():
     db.commit()
     print("Record Entered Successfully\n")
 
-def search(name):
+def search(vards):
     sql = "SELECT * FROM book WHERE name = %s"
-    value = (name,)
+    value = (vards,)
     cursor.execute(sql, value)
     record = cursor.fetchone()
     if record is None:
@@ -67,9 +67,9 @@ def search(name):
         print('E-mail:', record[3])
 
 
-def delete_record(name):
+def delete_record(vards):
     sql = "DELETE FROM darbinieki WHERE name = %s"
-    value = (name,)
+    value = (vards,)
     cursor.execute(sql, value)
     db.commit()
     if cursor.rowcount == 0:
@@ -77,8 +77,50 @@ def delete_record(name):
     else:
         print("Ieraksts veiksmīgi dzēsts")
 
+def modify_record(vards):
+    sql = "SELECT * FROM book WHERE name = %s"
+    value = (vards,)
+    cursor.execute(sql, value)
+    record = cursor.fetchone()
+    if record is None:
+        print("No such record exists")
+    else:
+        while True:
+            print("\nPress the option you want to edit: ")
+            print("1. Vārds")
+            print("2. Adrese")
+            print("3. Telefona nummurs")
+            print("4. Atpakaļ")
+            print()
+            ch = int(input("Izvēlies opciju (1-4): "))
+            if ch == 1:
+                jauns_vards = input("Ierakstiet jauno vārdu: ")
+                sql = "UPDATE darbinieki SET vards = %s WHERE vards = %s"
+                values = (jauns_vards, vards)
+                cursor.execute(sql, values)
+                db.commit()
+                print(cursor.rowcount, "Ieraksts veiksmīgi atjaunināts")
+            elif ch == 2:
+                jauna_adrese = input("Ierakstiet jaunu adresi: ")
+                sql = "UPDATE darbinieki SET adrese = %s WHERE vards = %s"
+                values = (jauna_adrese, vards)
+                cursor.execute(sql, values)
+                db.commit()
+                print(cursor.rowcount, "Ieraksts veiksmīgi atjaunināts")
+            elif ch == 3:
+                jauns_nummurs = input("Ierakstiet jauno telefona nummuru : ")
+                sql = "UPDATE darbinieki SET nummurs = %s WHERE vards = %s"
+                values = (jauns_nummurs, vards)
+                cursor.execute(sql, values)
+                db.commit()
+                print(cursor.rowcount, "Ieraksts veiksmīgi atjaunināts")
+            elif ch == 4:
+                break
+            else:
+                print("Nederīga izvēle !!!\n")
 
-        ch = int(input("Izvēlies opciju (1-6): "))
+
+        ch = int(input("Izvēlies opciju (1-7): "))
         print()
         if ch == 1:
             print("PIEVIENOT DARBINIEKU")
@@ -90,15 +132,19 @@ def delete_record(name):
         elif ch == 3:
             print("IZDZĒST DARBINIEKU")
             delete_record()
-        elif ch == 4:
+        elif ch == 4: 
+            print("Modificēt ierakstu")
+            name = input("Enter name: ")
+            modify_record(name)
+        elif ch == 5:
             print("APRĒĶINA ALGAS")
             name = input("Enter name: ")
             _record(name)
-        elif ch == 5:
+        elif ch == 6:
             print("DARBA LAIKS")
             name = input("Enter name: ")
             _reord(name)
-        elif ch == 6:
+        elif ch == 7:
             print("Iziet")
             db.close()
             break
