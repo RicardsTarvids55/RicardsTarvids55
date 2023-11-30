@@ -24,21 +24,20 @@ def intro():
     print("{:^80s}".format("DARBINIEKU"))
     print("{:^80s}".format(""))
     print("{:^80s}".format("PROJEKTS"))
-    print("{:^80s}".format("Autori: Rainers Grigors, Ričards Tarvids, ? Kurtiša"))
+    print("{:^80s}".format("Autori: Rainers Grigors, Ričards Tarvids, Elīna Kurtiša"))
     print("=" * 80)
     print()
     time.sleep(2)
 
-def main():
+def main_menu():
     intro()
     while True:
         print("\nMAIN MENU ")
-        print("1. ")
-        print("2. ")
-        print("3. ")
-        print("4. ")
-        print("5. ")
-        print("6. EXIT")
+        print("1. Meklēt darbiniekus")
+        print("2. Izdzēst darbinieku")
+        print("3. Aprēķina algas")
+        print("4. Darba laiks")
+        print("5. Iziet")
         print()
         ch = int(input("Izvēlies opciju (1-6): "))
         print()
@@ -68,5 +67,5 @@ def main():
             print("Invalid choice")
 
 
-main()
+main_menu()
    
