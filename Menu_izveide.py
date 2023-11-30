@@ -33,39 +33,77 @@ def main_menu():
     intro()
     while True:
         print("\nMAIN MENU ")
-        print("1. Meklēt darbiniekus")
-        print("2. Izdzēst darbinieku")
-        print("3. Aprēķina algas")
-        print("4. Darba laiks")
-        print("5. Iziet")
+        print("1. Pievienot darbinieku")
+        print("2. Meklēt darbiniekus")
+        print("3. Izdzēst darbinieku")
+        print("4. Aprēķina algas")
+        print("5. Darba laiks")
+        print("6. Iziet")
         print()
+        time.sleep(2)
+
+def create_record():
+    vards = input("Ierakstiet vārdu: ")
+    adrese = input("Ierakstiet adresi: ")
+    nummurs = input("Ierakstiet telefona nummuru: ")
+    email = input("Ierakstiet email: ")
+    sql = "INSERT INTO darbinieki(vards, adrese, telefona nummurs, email) VALUES (%s,%s,%s,%s)"
+    record = (vards, adrese, nummurs, email)
+    cursor.execute(sql, record)
+    db.commit()
+    print("Record Entered Successfully\n")
+
+def search(name):
+    sql = "SELECT * FROM book WHERE name = %s"
+    value = (name,)
+    cursor.execute(sql, value)
+    record = cursor.fetchone()
+    if record is None:
+        print("Šāda ieraksta nav")
+    else:
+        print('Vārds:', record[0])
+        print('Adrese:', record[1])
+        print('Telefona nummurs:', record[2])
+        print('E-mail:', record[3])
+
+
+def delete_record(name):
+    sql = "DELETE FROM darbinieki WHERE name = %s"
+    value = (name,)
+    cursor.execute(sql, value)
+    db.commit()
+    if cursor.rowcount == 0:
+        print("Ieraksts nav atrasts")
+    else:
+        print("Ieraksts veiksmīgi dzēsts")
+
+
         ch = int(input("Izvēlies opciju (1-6): "))
         print()
         if ch == 1:
-            print("piemērs:ADD NEW RECORD")
-            ()
+            print("PIEVIENOT DARBINIEKU")
+            create_record()
         elif ch == 2:
-            print("piemērs:SEARCH RECORD BY NAME")
+            print("MEKLĒT DARBINIEKU")
             name = input("Enter name: ")
             search(name)
         elif ch == 3:
-            print("piemērs:DISPLAY ALL RECORDS")
-            display_all()
+            print("IZDZĒST DARBINIEKU")
+            delete_record()
         elif ch == 4:
-            print("piemērs:DELETE RECORD")
+            print("APRĒĶINA ALGAS")
             name = input("Enter name: ")
-            delete_record(name)
+            _record(name)
         elif ch == 5:
-            print("piemērs:MODIFY RECORD")
+            print("DARBA LAIKS")
             name = input("Enter name: ")
-            modify_record(name)
+            _reord(name)
         elif ch == 6:
-            print("piemērs:Thanks for using Contact Book")
+            print("Iziet")
             db.close()
             break
         else:
             print("Invalid choice")
-
 
 main_menu()
    
