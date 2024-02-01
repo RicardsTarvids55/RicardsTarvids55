@@ -35,4 +35,14 @@ photo = tk.PhotoImage(file='Turtle graphics/Tkinter/valentines-day.png')
 image_label = ttk.Label(root,image=photo,padding=5)
 image_label.pack()
 
+message = tk.Label(root, text="Ievade")
+message.place(x = 200, y = 250)
+
+def button_clicked():
+    print('Button clicked')
+
+
+button = ttk.Button(root, text='Do a click', command=button_clicked)
+button.place(x=200, y=300)
+
 root.mainloop()
