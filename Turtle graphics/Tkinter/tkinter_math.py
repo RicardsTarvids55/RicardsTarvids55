@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
+from tkinter import messagebox
 
 root = tk.Tk()
 
@@ -22,8 +23,11 @@ ievade2 = tk.Entry(root)
 ievade2.pack(pady=10)
 
 def saskaitits():
-    teksts.config(text = int(ievade1.get()) + int(ievade2.get()))
-    teksts2.config(image=photo) 
+    try:
+       teksts.config(text = int(ievade1.get()) + int(ievade2.get()))
+       teksts2.config(image=photo) 
+    except ValueError:
+        messagebox.showerror("Error","There is an ERROR")  
 
 poga = tk.Button(root, text = 'Saskaitīt', command = saskaitits)
 poga.pack(pady=10)
