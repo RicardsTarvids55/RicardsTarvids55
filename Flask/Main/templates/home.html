@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Welcome to my Flask Web App</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about/">About</a></li>
+                <li><a href="/socials/">Socials</a></li>
+                <li><a href="/info/">Info</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <h2>{{ title }}</h2>
+        <p>This is the content of the home page. You can display any information you want here.</p>
+    </section>
+    <footer>
+        <p>&copy; 2024 Your Web App</p>
+    </footer>
+</body>
+</html>
+

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mana pirmā Flask lapa</title>
+    <!--ja būtu css/stils.css tad būtu jāveido vēl viena mape mapē static ar nosaukumu css un jāievieto stils.css fails tur. -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='layout.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo">Ardit's web app</h1>
+            <nav>
+                <ul class="menu">
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('about') }}">About</a></li>
+                    <li><a href="{{ url_for('socials') }}">Socials</a></li>
+                    <li><a href="{{ url_for('info') }}">Info</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
