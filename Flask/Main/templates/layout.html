@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Mana pirmā Flask lapa</title>
-    <!--ja būtu css/stils.css tad būtu jāveido vēl viena mape mapē static ar nosaukumu css un jāievieto stils.css fails tur. -->
+    <title>My First Flask Page</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='layout.css') }}">
 </head>
 <body>
@@ -15,6 +14,8 @@
                     <li><a href="{{ url_for('about') }}">About</a></li>
                     <li><a href="{{ url_for('socials') }}">Socials</a></li>
                     <li><a href="{{ url_for('info') }}">Info</a></li>
+                    <li><a href="{{ url_for('headlines_api') }}">API Headlines</a></li>
+                    <li><a href="{{ url_for('headlines_export') }}">Exported Headlines</a></li>
                 </ul>
             </nav>
         </div>
