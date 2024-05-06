@@ -14,7 +14,13 @@ def get_delfi_headlines():
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    headlines = get_delfi_headlines()
+    response = requests.get("https://api.worldnewsapi.com/search-news?max-sentiment=-0.4&news-sources=https%3A%2F%2Fwww.huffingtonpost.co.uk&language=en")
+    if response.status_code == 200:
+        news = response.text
+    else:
+        news = "Nevar saņemt ziņas"
+    return render_template('home.html', headlines=headlines, news=news)
 
 @app.route('/about/')
 def about():
@@ -28,42 +34,6 @@ def socials():
 def index():
     headlines = get_delfi_headlines()
     return render_template('info.html', headlines=headlines)
-
-@app.route('/api/headlines')
-def get_headlines():
-    headlines = get_delfi_headlines()
-    return render_template('headlines.html', title='API Headlines', heading='API Headlines', content=[f'<li>{headline}</li>' for headline in headlines])
-
-@app.route('/export_headlines')
-def export_headlines():
-    url = 'https://www.delfi.lv/laika-zinas'
-    response = requests.get(url)
-
-    if response.status_code == 200:
-        soup = BeautifulSoup(response.content, 'html.parser')
-        headlines = soup.find_all('span', class_='d-inline')
-        headlines_list = [headline.text.strip() for headline in headlines]
-        return render_template('headlines.html', title='Exported Headlines', heading='Exported Headlines', content=[f'<li>{headline}</li>' for headline in headlines_list])
-    else:
-        return f'Error: Unable to fetch data from {url}'
-
-@app.route('/headlines_api')
-def headlines_api():
-    headlines = get_delfi_headlines()
-    return render_template('headlines.html', title='API Headlines', heading='API Headlines', content=[f'<li>{headline}</li>' for headline in headlines])
-
-@app.route('/headlines_export')
-def headlines_export():
-    url = 'https://www.delfi.lv/laika-zinas'
-    response = requests.get(url)
-
-    if response.status_code == 200:
-        soup = BeautifulSoup(response.content, 'html.parser')
-        headlines = soup.find_all('span', class_='d-inline')
-        headlines_list = [headline.text.strip() for headline in headlines]
-        return render_template('headlines.html', title='Exported Headlines', heading='Exported Headlines', content=[f'<li>{headline}</li>' for headline in headlines_list])
-    else:
-        return f'Error: Unable to fetch data from {url}'
 
 if __name__ == '__main__':
     app.run(debug=True)
