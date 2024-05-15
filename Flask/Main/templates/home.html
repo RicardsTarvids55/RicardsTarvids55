@@ -1,32 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{{ title }}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='layout.css') }}">
-</head>
-<body>
-    <header>
-        <h1>Welcome to my Flask website</h1>
-        <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/about/">About</a></li>
-                <li><a href="/socials/">Socials</a></li>
-                <li><a href="/info/">Info</a></li>
-                <li><a href="/APInews/">APInews</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <h2>{{ title }}</h2>
-        <p>School: Tukums Secondary School No. 2</p>
-        <p>Author: Ričards Tarvids</p>
-        <p>Grade: 12th grade</p>
-    </main>
-    <footer>
-        <p>&copy; 2024 </p>
-    </footer>
-</body>
-</html>
+{% extends "layout.html" %}
 
+{% block title %}Home{% endblock %}
 
+{% block content %}
+<h2>{{ title }}</h2>
+<p>School: Tukuma 2. vidusskola</p>
+<p>Author: Ričards Tarvids</p>
+<p>Grade: 12.b klase</p>
+{% endblock %}

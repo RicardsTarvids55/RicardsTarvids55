@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='layout.css') }}">
 </head>
 <body>
-    <nav>
-        <ul>
+    <header>
+        <h1>Sveicināti manā Flask programmā.</h1>
+        <nav class="tab-bar">
+            <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/about/">About</a></li>
             <li><a href="/socials/">Socials</a></li>
@@ -15,9 +18,12 @@
             <li><a href="/APInews/">APInews</a></li>
         </ul>
     </nav>
-    <div>
-        {% block content %}{% endblock %}
-    </div>
+</header>
+<main>
+    {% block content %}{% endblock %}
+</main>
+<footer>
+    <p>&copy; Ričards Tarvids 12.b 2024 </p>
+</footer>
 </body>
 </html>
-

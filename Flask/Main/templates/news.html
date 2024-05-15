@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block title %}API News{% endblock %}
+
+{% block content %}
+<h2>API Ziņas</h2>
+<ul>
+    {% if news %}
+        {% for article in news %}
+            <li>
+                <strong>{{ article.title }}</strong><br>
+                <small>{{ article.publishedAt }}</small><br>
+                <a href="{{ article.url }}">Read more</a>
+            </li>
+        {% endfor %}
+    {% else %}
+        <li>Ziņas nav pieejamas</li>
+    {% endif %}
+</ul>
+{% endblock %}

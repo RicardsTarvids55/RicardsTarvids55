@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Socials</title>
+    <title>Sociālie mediju</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='layout.css') }}">
 </head>
 <body>
     <header>
-        <h1>Our Socials</h1>
+        <h1>Sazināšanās opcijas</h1>
         <nav>
             <ul>
                 <li><a href="/">Home</a></li>
@@ -18,10 +18,13 @@
         </nav>
     </header>
     <main>
-        <h2>Contact Us!</h2>
-        <p>Here you can find contact information for the author of the project.</p>
+        <h2>Sazinies ar mums!</h2>
+        <p>Šeit Jūs varat redzēt saites veidotāja kontaktinformāciju:</p>
+        <p>Eklase - Ričards Tarvids 12.b</p> <img src="{{ url_for('static', filename='images/eklase.png') }}" alt="Image">
+        <p>Whatsapp - 22456910 (Piemēra numurs)</p> <img src="{{ url_for('static', filename='images/Whatsap.png') }}" alt="Image">
     </main>
     <footer>
+        <p>&copy; Ričards Tarvids 12.b 2024 </p>
     </footer>
 </body>
 </html>

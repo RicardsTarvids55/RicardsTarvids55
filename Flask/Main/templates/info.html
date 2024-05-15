@@ -1,16 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Info</title>
-</head>
-<body>
-    <main>
-        <h1>External Source Information</h1>
-        <ul>
-            {% for headline in headlines %}
-                <li>{{ headline }}</li>
-            {% endfor %}
-        </ul>
-    </main>
-</body>
-</html>
+{% extends "layout.html" %}
+
+{% block title %}Info{% endblock %}
+
+{% block content %}
+<h2>Info Lapa</h2>
+<ul>
+    {% for headline in headlines %}
+        <li>{{ headline }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
