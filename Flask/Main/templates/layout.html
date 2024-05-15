@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
+    <!--Savienoju lapu ar css failu-->
     <link rel="stylesheet" href="{{ url_for('static', filename='layout.css') }}">
 </head>
 <body>
     <header>
         <h1>Sveicināti manā Flask programmā.</h1>
+        <!--Izveidoju navigācijas opcijas-->
         <nav class="tab-bar">
             <ul>
             <li><a href="/">Home</a></li>

@@ -5,6 +5,7 @@ import os
 
 app = Flask(__name__)
 
+#Izveidoju scraping funkciju
 def get_delfi_headlines():
     url = 'https://www.delfi.lv'
     response = requests.get(url)
@@ -13,6 +14,7 @@ def get_delfi_headlines():
     headlines_list = [headline.text.strip() for headline in headlines]
     return headlines_list
 
+#Izveidoju funkciju, lai varētu dabūt informāciju no API
 def get_news(country, api_key):  
     url = f"https://newsapi.org/v2/top-headlines?country={country}&apiKey={api_key}"
     response = requests.get(url)
@@ -31,16 +33,12 @@ def get_news(country, api_key):
     else:
         return None
 
-
+#izveidoju mājas lapu
 @app.route('/')
 def home():
-    headlines = get_delfi_headlines()
-    api_key = "133792de3d5e436fa582dbbf43dee274"
-    news = get_news('us', api_key)  
-    if news is None:
-        news = "Failed to fetch news."
-    return render_template('home.html', headlines=headlines, news=news)
+    return render_template('home.html')
 
+#Izmantoju API atslēgu lai izvadītu informāciju šajā lapā
 @app.route('/APInews/')
 def news():
     api_key = "133792de3d5e436fa582dbbf43dee274" 

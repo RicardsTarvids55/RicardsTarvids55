@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Sociālie mediju</title>
+    <!--Savienoju lapu ar css failu-->
     <link rel="stylesheet" href="{{ url_for('static', filename='layout.css') }}">
 </head>
 <body>
@@ -20,6 +21,7 @@
     <main>
         <h2>Sazinies ar mums!</h2>
         <p>Šeit Jūs varat redzēt saites veidotāja kontaktinformāciju:</p>
+        <!--Ievietoju lapā .png failus un kontaktinformāciju-->
         <p>Eklase - Ričards Tarvids 12.b</p> <img src="{{ url_for('static', filename='images/eklase.png') }}" alt="Image">
         <p>Whatsapp - 22456910 (Piemēra numurs)</p> <img src="{{ url_for('static', filename='images/Whatsap.png') }}" alt="Image">
     </main>

@@ -1,7 +1,9 @@
 {% extends "layout.html" %}
 
+<!--Šī bloka mērķis ir ļaut konkrētajai lapai ignorēt layout.html norādīto noklusējuma nosaukumu-->
 {% block title %}Home{% endblock %}
 
+<!--konkrētā lapa var ignorēt layout.html sniegto saturu-->
 {% block content %}
 <h2>{{ title }}</h2>
 <p>School: Tukuma 2. vidusskola</p>
